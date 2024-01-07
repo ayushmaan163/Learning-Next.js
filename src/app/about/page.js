@@ -8,8 +8,12 @@ const About = () => {
     <div>
       <h1>About Page</h1>
       <Link href="/">Go to Home Page</Link>
-
+      <br />
       <button onClick={() => router.push("/")}>Go to Home Page</button>
+      <br />
+      <Link href="/about/aboutStudent">About Student</Link>
+      <br />
+      <Link href="/about/aboutCollege">About College</Link>
     </div>
   );
 };
