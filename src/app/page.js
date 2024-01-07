@@ -1,21 +1,26 @@
 "use client";
-import { useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [name, setName] = useState("Ayushmaan");
+  const router = useRouter();
 
-  const alertPrint = () => {
-    setName("Ironman");
+  const navigate = (route) => {
+    router.push(route);
   };
 
   return (
     <main className={styles.main}>
-      <h1>Events, Function & State {name}</h1>
+      <h1>Routing</h1>
 
-      <button onClick={alertPrint}>Click Me!!</button>
+      {/* Link */}
+      <Link href="/login">Go to Login Page</Link>
+      <Link href="/about">Go to About Page</Link>
+
+      {/* Navigation */}
+      <button onClick={() => navigate("/login")}>Go to Login Page</button>
+      <button onClick={() => navigate("/about")}>Go to About Page</button>
     </main>
   );
 }
