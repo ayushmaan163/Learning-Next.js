@@ -1,27 +1,17 @@
-"use client";
-import { useEffect, useState } from "react";
+// Function to call the API
+async function productList() {
+  const data = await fetch("https://dummyjson.com/products");
+  const json = await data.json();
+  return json.products;
+}
 
-export default function ProductList() {
-  const [data, setData] = useState([]);
-
-  const getData = async () => {
-    const data = await fetch("https://dummyjson.com/products");
-    const json = await data.json();
-    console.log(json.products);
-    setData(json.products);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
+export default async function ProductPage() {
+  const products = await productList();
   return (
     <div>
       <h1>Product List</h1>
-      {data.map((item) => (
-        <h4>
-          {item.id}. {item.title} - ${item.price}
-        </h4>
+      {products.map((item) => (
+        <h4>Name: {item.title}</h4>
       ))}
     </div>
   );
