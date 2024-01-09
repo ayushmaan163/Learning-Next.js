@@ -1,3 +1,5 @@
+import Button from "./button";
+
 // Function to call the API
 async function productList() {
   const data = await fetch("https://dummyjson.com/products");
@@ -10,8 +12,12 @@ export default async function ProductPage() {
   return (
     <div>
       <h1>Product List</h1>
+
       {products.map((item) => (
-        <h4>Name: {item.title}</h4>
+        <div>
+          <h4>Name: {item.title}</h4>
+          <Button price={item.price} />
+        </div>
       ))}
     </div>
   );
